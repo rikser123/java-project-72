@@ -59,6 +59,8 @@ public class App {
 
         app.get(NamedRoutes.root(), UrlController::main);
         app.post(NamedRoutes.createUrls(), UrlController::createUrl);
+        app.get(NamedRoutes.createUrls(), UrlController::list);
+        app.get(NamedRoutes.urlItem("{id}"), UrlController::listItem);
 
         return app;
     }
