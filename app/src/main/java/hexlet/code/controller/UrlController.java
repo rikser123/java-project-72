@@ -52,7 +52,7 @@ public class UrlController {
             }
             ctx.redirect(NamedRoutes.createUrls());
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("sys");
             ctx.sessionAttribute("error", "Некорректный URL");
             ctx.redirect(NamedRoutes.root());

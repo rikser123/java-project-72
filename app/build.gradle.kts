@@ -37,6 +37,7 @@ dependencies {
 
     implementation("gg.jte:jte:3.1.9")
     implementation("io.javalin:javalin-rendering:6.1.3")
+    testImplementation("org.assertj:assertj-core:3.25.3")
 }
 
 tasks.test {
