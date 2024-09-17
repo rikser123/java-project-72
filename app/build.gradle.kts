@@ -25,6 +25,10 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.14.0")
     implementation("org.apache.commons:commons-collections4:4.4")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.7.4")
+
+    implementation("io.javalin:javalin:6.1.3")
+    implementation("io.javalin:javalin-bundle:6.1.3")
+    implementation("io.javalin:javalin-rendering:6.1.3")
 }
 
 tasks.test {

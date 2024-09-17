@@ -1,16 +1,22 @@
 package hexlet.code;
 
+import io.javalin.Javalin;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class App {
+    public static Javalin getApp() {
+        var app = Javalin.create(config -> {
+            config.bundledPlugins.enableDevLogging();
+        });
+
+        app.get("/", ctx -> {
+            ctx.result("Hello, World!");
+        });
+
+        return app;
+    }
+
     public static void main(String[] args) {
-
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-
-            System.out.println("i = " + i);
-        }
+        var app = getApp();
+        app.start(7070);
     }
 }
