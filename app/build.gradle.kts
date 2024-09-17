@@ -6,6 +6,7 @@ plugins {
     jacoco
     application
     checkstyle
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "hexlet.code"
@@ -25,6 +26,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.14.0")
     implementation("org.apache.commons:commons-collections4:4.4")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.7.4")
+    implementation("org.postgresql:postgresql:42.7.2")
 
     implementation("com.h2database:h2:2.2.224")
     implementation("com.zaxxer:HikariCP:5.1.0")
