@@ -12,19 +12,18 @@ import io.javalin.Javalin;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import java.nio.file.Path;
 import hexlet.code.repository.BaseRepository;
 import hexlet.code.controller.UrlController;
 
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import io.javalin.rendering.template.JavalinJte;
-import gg.jte.resolve.DirectoryCodeResolver;
+import gg.jte.resolve.ResourceCodeResolver;
 
 public class App {
     private static TemplateEngine createTemplateEngine() {
-        DirectoryCodeResolver codeResolver = new DirectoryCodeResolver(
-                Path.of("src", "main", "jte").toAbsolutePath().normalize());
+        ClassLoader classLoader = App.class.getClassLoader();
+        ResourceCodeResolver codeResolver = new ResourceCodeResolver("templates", classLoader);
         TemplateEngine templateEngine = TemplateEngine.create(codeResolver, ContentType.Html);
         return templateEngine;
     }
