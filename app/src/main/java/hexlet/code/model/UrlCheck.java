@@ -14,7 +14,7 @@ public class UrlCheck {
     private String h1;
     private String description;
     private Long urlId;
-    private Timestamp created_at;
+    private Timestamp createdAt;
 
     public UrlCheck(Integer statusCode, String title, String h1, String description, Long urlId) {
         this.statusCode = statusCode;

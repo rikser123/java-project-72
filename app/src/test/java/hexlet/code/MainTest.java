@@ -65,9 +65,9 @@ class AppTest {
         hikariConfig.setJdbcUrl(getDatabaseUrl());
 
         dataSource = new HikariDataSource(hikariConfig);
-        var JDBC_DATABASE_URL = System.getenv().getOrDefault("JDBC_DATABASE_URL", "jdbc:h2:mem:project");
+        var databaseUrl = System.getenv().getOrDefault("JDBC_DATABASE_URL", "jdbc:h2:mem:project");
         var localBase = "jdbc:h2:mem:project";
-        var scheme = localBase.equals(JDBC_DATABASE_URL) ? "schemaLocal.sql" : "schemeProd.sql";
+        var scheme = localBase.equals(databaseUrl) ? "schemaLocal.sql" : "schemeProd.sql";
 
         var schema = AppTest.class.getClassLoader().getResource(scheme);
         var file = new File(schema.getFile());

@@ -53,7 +53,7 @@ content = @`
                         <td>${check.getTitle()}</td>
                         <td>${check.getH1()}</td>
                         <td>${check.getDescription()}</td>
-                        <td>${check.getCreated_at().toString()}</td>
+                        <td>${check.getCreatedAt().toString()}</td>
                     </tr>
                  @endfor
                 </tbody>

@@ -37,7 +37,7 @@ content = @`
                             <td><a href="${NamedRoutes.urlItem(url.getId().toString())}">${url.getName()}</a></td>
                             <td>
                                 @if (page.getChecks().get(url.getId()) != null)
-                                    ${page.getChecks().get(url.getId()).getCreated_at().toString()}
+                                    ${page.getChecks().get(url.getId()).getCreatedAt().toString()}
                                  @endif
                             </td>
                             <td>
