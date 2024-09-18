@@ -9,7 +9,7 @@ CREATE TABLE urls(
 
 CREATE TABLE url_checks(
        id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-       statusCode INT,
+       status_code INT,
        title VARCHAR(255),
        h1 VARCHAR(255),
        description VARCHAR(255),
