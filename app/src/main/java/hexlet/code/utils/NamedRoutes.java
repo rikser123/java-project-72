@@ -12,4 +12,8 @@ public class NamedRoutes {
     public static String urlItem(String id) {
         return "/urls/" + id;
     }
+
+    public static String urlItemChecks(String id) {
+        return "/urls/" + id + "/checks";
+    }
 }

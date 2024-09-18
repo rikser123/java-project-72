@@ -3,7 +3,7 @@ import hexlet.code.utils.NamedRoutes;
 import hexlet.code.dto.ListPage;
 public final class JtelistGenerated {
 	public static final String JTE_NAME = "list.jte";
-	public static final int[] JTE_LINE_INFO = {0,0,1,2,2,2,4,4,6,6,8,8,9,9,11,11,11,14,14,16,16,16,19,19,20,20,34,34,36,36,36,37,37,37,37,37,37,37,37,37,37,37,37,39,39,45,45,45,46,46,46,2,2,2,2};
+	public static final int[] JTE_LINE_INFO = {0,0,1,2,2,2,4,4,6,6,8,8,9,9,11,11,11,14,14,16,16,16,19,19,20,20,34,34,36,36,36,37,37,37,37,37,37,37,37,37,37,37,37,39,39,40,40,40,41,41,44,44,45,45,45,46,46,49,49,55,55,55,56,56,56,2,2,2,2};
 	public static void render(gg.jte.html.HtmlTemplateOutput jteOutput, gg.jte.html.HtmlInterceptor jteHtmlInterceptor, ListPage page) {
 		jteOutput.writeContent("\r\n");
 		gg.jte.generated.ondemand.layout.JtepageGenerated.render(jteOutput, jteHtmlInterceptor, new gg.jte.html.HtmlContent() {
@@ -41,7 +41,21 @@ public final class JtelistGenerated {
 					jteOutput.writeContent(">");
 					jteOutput.setContext("a", null);
 					jteOutput.writeUserContent(url.getName());
-					jteOutput.writeContent("</a></td>\r\n                        </tr>\r\n                    ");
+					jteOutput.writeContent("</a></td>\r\n                            <td>\r\n                                ");
+					if (page.getChecks().get(url.getId()) != null) {
+						jteOutput.writeContent("\r\n                                    ");
+						jteOutput.setContext("td", null);
+						jteOutput.writeUserContent(page.getChecks().get(url.getId()).getCreated_at().toString());
+						jteOutput.writeContent("\r\n                                 ");
+					}
+					jteOutput.writeContent("\r\n                            </td>\r\n                            <td>\r\n                                ");
+					if (page.getChecks().get(url.getId()) != null) {
+						jteOutput.writeContent("\r\n                                    ");
+						jteOutput.setContext("td", null);
+						jteOutput.writeUserContent(page.getChecks().get(url.getId()).getStatusCode().toString());
+						jteOutput.writeContent("\r\n                                ");
+					}
+					jteOutput.writeContent("\r\n                            </td>\r\n                        </tr>\r\n                    ");
 				}
 				jteOutput.writeContent("\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n        </section>\r\n    </main>\r\n");
 			}

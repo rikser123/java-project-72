@@ -1,8 +1,15 @@
 @import hexlet.code.dto.UrlItemPage
+@import hexlet.code.utils.NamedRoutes
 @param UrlItemPage page
 
 @template.layout.page(
 content = @`
+    @if (page.getMessage() != null)
+        <div class="rounded-0 m-0 alert alert-dismissible fade show alert-success" role="alert">
+            <p class="m-0">${page.getMessage()}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <section>
         <div class="container-lg mt-5">
             <h1>Сайт: ${page.getUrl().getName()}</h1>
@@ -24,7 +31,8 @@ content = @`
             </table>
 
             <h2 class="mt-5">Проверки</h2>
-            <form method="post" action="/urls/2/checks">
+            <form method="post" action="${NamedRoutes.urlItemChecks(page.getUrl().getId().toString())}">
+                <input type="hidden" value="${page.getUrl().getName()}" name="url"/>
                 <button type="submit" class="btn btn-primary">Запустить проверку</button>
             </form>
 
@@ -38,7 +46,16 @@ content = @`
                     <th class="col-2">Дата проверки</th>
                 </tr></thead>
                 <tbody>
-
+                @for (var check : page.getChecks())
+                    <tr>
+                        <td>${check.getId()}</td>
+                        <td>${check.getStatusCode()}</td>
+                        <td>${check.getTitle()}</td>
+                        <td>${check.getH1()}</td>
+                        <td>${check.getDescription()}</td>
+                        <td>${check.getCreated_at().toString()}</td>
+                    </tr>
+                 @endfor
                 </tbody>
             </table>
         </div>

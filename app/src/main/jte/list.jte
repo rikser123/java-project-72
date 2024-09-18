@@ -35,6 +35,16 @@ content = @`
                         <tr>
                             <td>${url.getId()}</td>
                             <td><a href="${NamedRoutes.urlItem(url.getId().toString())}">${url.getName()}</a></td>
+                            <td>
+                                @if (page.getChecks().get(url.getId()) != null)
+                                    ${page.getChecks().get(url.getId()).getCreated_at().toString()}
+                                 @endif
+                            </td>
+                            <td>
+                                @if (page.getChecks().get(url.getId()) != null)
+                                    ${page.getChecks().get(url.getId()).getStatusCode().toString()}
+                                @endif
+                            </td>
                         </tr>
                     @endfor
                     </tbody>

@@ -61,6 +61,7 @@ public class App {
         app.post(NamedRoutes.createUrls(), UrlController::createUrl);
         app.get(NamedRoutes.createUrls(), UrlController::list);
         app.get(NamedRoutes.urlItem("{id}"), UrlController::listItem);
+        app.post(NamedRoutes.urlItemChecks("{id}"), UrlController::createSiteCheck);
 
         return app;
     }
