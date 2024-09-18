@@ -12,7 +12,6 @@ import static io.javalin.rendering.template.TemplateUtil.model;
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 import hexlet.code.utils.Response;
@@ -28,17 +27,15 @@ public class UrlController {
 
     public static void list(Context ctx) throws SQLException {
         var urls = UrlRepository.getEntities();
-        var urlIds = urls.stream().map(url -> url.getId()).toArray();
-        var urlChecks = UrlCheckRepository.getEntitiesByUrl(urlIds);
-        var urlChecksByUrlId = urlChecks.stream().collect(Collectors.groupingBy(item -> item.getUrlId()));
-
-        var entries = urlChecksByUrlId.entrySet();
+        var urlIds = urls.stream().map(url -> url.getId()).toList();
         var result = new HashMap<Long, UrlCheck>();
-        for (var entry: entries) {
-            var key = entry.getKey();
-            var firstValue = entry.getValue().get(0);
-            result.put(key, firstValue);
+        for (var id : urlIds) {
+            var currentChecks = UrlCheckRepository.getEntities(id);
+            if (currentChecks.size() > 0) {
+                result.put(id, currentChecks.get(0));
+            }
         }
+
         String type = ctx.consumeSessionAttribute("type");
         String message = ctx.consumeSessionAttribute("message");
         var page = new ListPage(urls, message, type, result);

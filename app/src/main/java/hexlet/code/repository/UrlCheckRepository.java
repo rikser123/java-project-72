@@ -30,7 +30,7 @@ public class UrlCheckRepository extends BaseRepository {
 
     public static List<UrlCheck> getEntities(Long urlId) throws SQLException {
         var result = new ArrayList<UrlCheck>();
-        var sql = "SELECT * FROM url_checks WHERE urlId = ?";
+        var sql = "SELECT * FROM url_checks WHERE urlId = ? ORDER BY urlId DESC";
 
         try (var conn = dataSource.getConnection()) {
             var smtp = conn.prepareStatement(sql);
@@ -39,36 +39,6 @@ public class UrlCheckRepository extends BaseRepository {
 
             while (resultSet.next()) {
                 var id = resultSet.getLong("id");
-                var statusCode = resultSet.getInt("statusCode");
-                var title = resultSet.getString("title");
-                var h1 = resultSet.getString("h1");
-                var description = resultSet.getString("description");
-                var createdAt = resultSet.getTimestamp("created_at");
-
-                var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId);
-                urlCheck.setCreated_at(createdAt);
-                urlCheck.setId(id);
-
-                result.add(urlCheck);
-            }
-        }
-
-        return result;
-    }
-
-    public static List<UrlCheck> getEntitiesByUrl(Object[] urlIds) throws SQLException {
-        var result = new ArrayList<UrlCheck>();
-        var sql = "SELECT * FROM url_checks WHERE urlId IN(?) ORDER BY urlId ASC, created_at DESC";
-
-        try (var conn = dataSource.getConnection()) {
-            var smtp = conn.prepareStatement(sql);
-            var array = conn.createArrayOf("int", urlIds);
-            smtp.setArray(1, array);
-            var resultSet = smtp.executeQuery();
-
-            while (resultSet.next()) {
-                var id = resultSet.getLong("id");
-                var urlId = resultSet.getLong("urlId");
                 var statusCode = resultSet.getInt("statusCode");
                 var title = resultSet.getString("title");
                 var h1 = resultSet.getString("h1");
