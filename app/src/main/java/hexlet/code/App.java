@@ -23,7 +23,8 @@ import gg.jte.resolve.DirectoryCodeResolver;
 
 public class App {
     private static TemplateEngine createTemplateEngine() {
-        DirectoryCodeResolver codeResolver = new DirectoryCodeResolver(Path.of("src", "main", "jte"));
+        DirectoryCodeResolver codeResolver = new DirectoryCodeResolver(
+                Path.of("src", "main", "jte").toAbsolutePath().normalize());
         TemplateEngine templateEngine = TemplateEngine.create(codeResolver, ContentType.Html);
         return templateEngine;
     }
