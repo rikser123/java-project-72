@@ -56,13 +56,14 @@ public class UrlCheckRepository extends BaseRepository {
         return result;
     }
 
-    public static List<UrlCheck> getEntitiesByUrl(String urlIds) throws SQLException {
+    public static List<UrlCheck> getEntitiesByUrl(Object[] urlIds) throws SQLException {
         var result = new ArrayList<UrlCheck>();
         var sql = "SELECT * FROM url_checks WHERE urlId IN(?) ORDER BY urlId ASC, created_at DESC";
 
         try (var conn = dataSource.getConnection()) {
             var smtp = conn.prepareStatement(sql);
-            smtp.setString(1, urlIds);
+            var array = conn.createArrayOf("int", urlIds);
+            smtp.setArray(1, array);
             var resultSet = smtp.executeQuery();
 
             while (resultSet.next()) {

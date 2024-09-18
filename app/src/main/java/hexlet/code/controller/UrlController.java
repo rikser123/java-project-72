@@ -28,7 +28,7 @@ public class UrlController {
 
     public static void list(Context ctx) throws SQLException {
         var urls = UrlRepository.getEntities();
-        var urlIds = urls.stream().map(url -> url.getId().toString()).collect(Collectors.joining(","));
+        var urlIds = urls.stream().map(url -> url.getId()).toArray();
         var urlChecks = UrlCheckRepository.getEntitiesByUrl(urlIds);
         var urlChecksByUrlId = urlChecks.stream().collect(Collectors.groupingBy(item -> item.getUrlId()));
 
