@@ -13,6 +13,6 @@ CREATE TABLE url_checks(
        title VARCHAR(255),
        h1 VARCHAR(255),
        description VARCHAR(255),
-       urlId INT REFERENCES urls(id),
+       url_id INT REFERENCES urls(id),
        created_at TIMESTAMP
 );

@@ -11,7 +11,7 @@ import hexlet.code.model.UrlCheck;
 
 public class UrlCheckRepository extends BaseRepository {
     public static void save(UrlCheck urlCheck) throws SQLException {
-        var sql = "INSERT INTO url_checks(statusCode, title, h1, description, urlId, created_at) "
+        var sql = "INSERT INTO url_checks(statusCode, title, h1, description, url_id, created_at) "
                 + "VALUES (?, ?, ?, ?, ?, ?)";
 
         try (var conn = dataSource.getConnection()) {
@@ -30,7 +30,7 @@ public class UrlCheckRepository extends BaseRepository {
 
     public static List<UrlCheck> getEntities(Long urlId) throws SQLException {
         var result = new ArrayList<UrlCheck>();
-        var sql = "SELECT * FROM url_checks WHERE urlId = ? ORDER BY urlId DESC";
+        var sql = "SELECT * FROM url_checks WHERE url_id = ? ORDER BY url_id DESC";
 
         try (var conn = dataSource.getConnection()) {
             var smtp = conn.prepareStatement(sql);
