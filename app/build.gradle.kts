@@ -38,7 +38,9 @@ dependencies {
     implementation("gg.jte:jte:3.1.9")
     implementation("io.javalin:javalin-rendering:6.1.3")
     testImplementation("org.assertj:assertj-core:3.25.3")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
     implementation("com.mashape.unirest:unirest-java:1.4.9")
+    testImplementation("org.mock-server:mockserver-netty-no-dependencies:5.14.0")
 }
 
 tasks.test {

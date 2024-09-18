@@ -80,8 +80,8 @@ public class UrlController {
         var id = ctx.pathParamAsClass("id", Long.class).get();
 
         try {
-            var url = ctx.formParam("url");
-            var responseString = Unirest.get(url).asString();
+            var currentUrl = UrlRepository.find(id);
+            var responseString = Unirest.get(currentUrl.get().getName()).asString();
 
             var response = new Response(responseString);
             var title = response.getTitle();
