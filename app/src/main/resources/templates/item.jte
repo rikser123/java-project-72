@@ -25,7 +25,7 @@ content = @`
                 </tr>
                 <tr>
                     <td>Дата создания</td>
-                    <td>${page.getUrl().getCrated_at().toString()}</td>
+                    <td>${page.getUrl().getCreatedAt().toString()}</td>
                 </tr>
                 </tbody>
             </table>

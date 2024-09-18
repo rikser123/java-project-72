@@ -10,10 +10,10 @@ import java.sql.Timestamp;
 public class Url {
     private Long id;
     private String name;
-    private Timestamp crated_at;
+    private Timestamp createdAt;
 
-    public Url(String name, Timestamp crated_at) {
+    public Url(String name, Timestamp createdAt) {
         this.name = name;
-        this.crated_at = crated_at;
+        this.createdAt = createdAt;
     }
 }

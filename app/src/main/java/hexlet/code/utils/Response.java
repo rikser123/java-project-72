@@ -4,7 +4,7 @@ import com.mashape.unirest.http.HttpResponse;
 
 import java.util.regex.Pattern;
 
-public class Response {
+public final class Response {
     private HttpResponse<String> response;
 
     public Response(HttpResponse<String> response) {

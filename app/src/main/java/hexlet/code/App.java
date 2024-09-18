@@ -39,11 +39,11 @@ public class App {
 
         var hikariConfig = new HikariConfig();
         var localBase = "jdbc:h2:mem:project";
-        var JDBC_DATABASE_URL = System.getenv().getOrDefault("JDBC_DATABASE_URL", "jdbc:h2:mem:project");
-        hikariConfig.setJdbcUrl(JDBC_DATABASE_URL);
+        var databaseUrl = System.getenv().getOrDefault("JDBC_DATABASE_URL", "jdbc:h2:mem:project");
+        hikariConfig.setJdbcUrl(databaseUrl);
 
         var dataSource = new HikariDataSource(hikariConfig);
-        var scheme = localBase.equals(JDBC_DATABASE_URL) ? "schemaLocal.sql" : "schemeProd.sql";
+        var scheme = localBase.equals(databaseUrl) ? "schemaLocal.sql" : "schemeProd.sql";
         var sql = readResourceFile(scheme);
 
         try (var connection = dataSource.getConnection();
